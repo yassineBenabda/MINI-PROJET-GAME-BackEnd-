@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 
 import com.yassine.games.entities.Game;
+import com.yassine.games.entities.Genre;
 
 @SpringBootApplication
 public class GamesApplication implements CommandLineRunner{
@@ -20,6 +21,6 @@ public class GamesApplication implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
-		repositoryRestConfiguration.exposeIdsFor(Game.class);
+		repositoryRestConfiguration.exposeIdsFor(Game.class,Genre.class);
 	}
 }
