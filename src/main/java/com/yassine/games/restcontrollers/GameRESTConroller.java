@@ -48,8 +48,16 @@ public class GameRESTConroller {
 		gameService.deleteGameById(id);
 	}
 	
-	@RequestMapping(value="/gamsgen/{idGenre}",method = RequestMethod.GET)
-	public List<Game> getGamesByGenreId(@PathVariable("idGenre") Long idGenre) {
-	return gameService.findByGenreIdGenre(idGenre);
+	@RequestMapping(value="/gamesgenre/{idGenre}",method = RequestMethod.GET)
+	public List<Game> getGamesByGenreId(@PathVariable("idGenre") Long idGenre) 
+	{
+		return gameService.findByGenreIdGenre(idGenre);
 	}
+	
+	/*@RequestMapping(value="/gamesByName/{nom}",method = RequestMethod.GET)
+	public List<Game> findByNomGameContains(@PathVariable("nom") String nom) 
+	{
+		return gameService.findByNomGameContains(nom);
+	}*/
+
 }
