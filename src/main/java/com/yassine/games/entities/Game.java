@@ -17,6 +17,8 @@ public class Game {
 	private String nomGame;
 	private Double prixGame;
 	private Date datedeSortie;
+	private String email;
+	
 	
 	@ManyToOne
 	private Genre genre;
@@ -24,11 +26,12 @@ public class Game {
 	public Game() {
 		super();
 	}
-	public Game(String nomGame, Double prixGame, Date datedeSortie) {
+	public Game(String nomGame, Double prixGame, Date datedeSortie, String email) {
 		super();
 		this.nomGame = nomGame;
 		this.prixGame = prixGame;
 		this.datedeSortie = datedeSortie;
+		this.email = email;
 	}
 	public Long getIdGame() {
 		return idGame;
@@ -60,9 +63,16 @@ public class Game {
 	public void setGenre(Genre genre) {
 		this.genre = genre;
 	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
 	@Override
 	public String toString() {
 		return "Game [idGame=" + idGame + ", nomGame=" + nomGame + ", prixGame=" + prixGame + ", datedeSortie="
 				+ datedeSortie + "]";
 	}
+	
 }

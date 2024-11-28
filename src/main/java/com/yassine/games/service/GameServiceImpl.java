@@ -3,6 +3,7 @@ package com.yassine.games.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 import com.yassine.games.entities.Game;
@@ -15,6 +16,7 @@ public class GameServiceImpl implements GameService {
 	 @Autowired 
 	 GameRepository gameRepository; 
 	  
+	 @PreAuthorize("hasAuthority('ADMIN')")
 	 @Override 
 	 public Game saveGame(Game g) { 
 		 return gameRepository.save(g); 

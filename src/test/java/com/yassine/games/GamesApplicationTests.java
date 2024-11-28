@@ -18,7 +18,7 @@ class GamesApplicationTests {
 	
 	@Test
 	public void testCreateGame() { 
-		Game gam = new Game("PC Msi",3000.000,new Date()); 
+		Game gam = new Game("PC Msi",3000.000,new Date(),"yassine.benabda9@gmail.com"); 
 		gameRepository.save(gam); 
 	}
 	
