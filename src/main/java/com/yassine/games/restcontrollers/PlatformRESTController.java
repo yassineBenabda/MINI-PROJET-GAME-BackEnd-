@@ -28,19 +28,19 @@ public class PlatformRESTController {
     }
 
     // Create a new platform
-    @PostMapping("/add")
+    @PostMapping("/addplatform")
     public Platform createPlatform(@RequestBody Platform platform) {
         return platformService.savePlatform(platform);
     }
 
     // Update an existing platform
-    @PutMapping("/update")
+    @PutMapping("/updateplatform")
     public Platform updatePlatform(@RequestBody Platform platform) {
         return platformService.updatePlatform(platform);
     }
 
     // Delete a platform by ID
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/deleteplatform/{id}")
     public void deletePlatform(@PathVariable("id") Long id) {
         platformService.deletePlatformById(id);
     }

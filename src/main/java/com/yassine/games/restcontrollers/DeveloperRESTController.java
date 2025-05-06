@@ -28,19 +28,19 @@ public class DeveloperRESTController {
     }
 
     // Create a new developer
-    @PostMapping("/add")
+    @PostMapping("/adddeveloper")
     public Developer createDeveloper(@RequestBody Developer developer) {
         return developerService.saveDeveloper(developer);
     }
 
     // Update an existing developer
-    @PutMapping("/update")
+    @PutMapping("/updatedeveloper")
     public Developer updateDeveloper(@RequestBody Developer developer) {
         return developerService.updateDeveloper(developer);
     }
 
     // Delete a developer by ID
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/deletedeveloper/{id}")
     public void deleteDeveloper(@PathVariable("id") Long id) {
         developerService.deleteDeveloperById(id);
     }
