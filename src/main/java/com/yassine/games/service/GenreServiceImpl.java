@@ -36,8 +36,7 @@ public class GenreServiceImpl implements GenreService {
 
     @Override
     public Genre getGenre(Long id) {
-        Optional<Genre> genre = genreRepository.findById(id);
-        return genre.orElse(null);
+        return genreRepository.findById(id).get();
     }
 
     @Override

@@ -26,22 +26,22 @@ public class GenreRESTController {
         return genreService.getGenre(id);
     }
 
-    @PostMapping("/add")
+    @PostMapping("/addgenre")
     public Genre createGenre(@RequestBody Genre genre) {
         return genreService.saveGenre(genre);
     }
 
-    @PutMapping("/update")
+    @PutMapping("/updategenre")
     public Genre updateGenre(@RequestBody Genre genre) {
         return genreService.updateGenre(genre);
     }
 
-    @DeleteMapping("/delete")
+    @DeleteMapping("/deletegenre")
     public void deleteGenre(@RequestBody Genre genre) {
         genreService.deleteGenre(genre);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/deletegenre/{id}")
     public void deleteGenreById(@PathVariable("id") Long id) {
         genreService.deleteGenreById(id);
     }
