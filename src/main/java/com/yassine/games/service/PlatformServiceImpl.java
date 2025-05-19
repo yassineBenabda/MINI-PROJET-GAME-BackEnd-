@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class PlatformServiceImpl {
+public class PlatformServiceImpl implements PlatformService {
 
     @Autowired
     private PlatformRepository platformRepository;
@@ -38,4 +38,22 @@ public class PlatformServiceImpl {
     public void deletePlatformById(Long id) {
         platformRepository.deleteById(id);
     }
+
+	@Override
+	public void deletePlatform(Platform platform) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public List<Platform> findByName(String name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Platform> findByManufacturer(String manufacturer) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

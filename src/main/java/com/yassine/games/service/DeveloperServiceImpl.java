@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class DeveloperServiceImpl {
+public class DeveloperServiceImpl implements DeveloperService {
 
     @Autowired
     private DeveloperRepository developerRepository;
@@ -33,4 +33,22 @@ public class DeveloperServiceImpl {
     public void deleteDeveloperById(Long id) {
         developerRepository.deleteById(id);
     }
+
+	@Override
+	public void deleteDeveloper(Developer developer) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public List<Developer> findByName(String name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Developer> findByCountry(String country) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
