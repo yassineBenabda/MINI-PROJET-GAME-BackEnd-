@@ -3,7 +3,7 @@ package com.yassine.games.restcontrollers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -53,5 +53,10 @@ public class GameRESTConroller {
 	@GetMapping("/gamesgenre/{idGenre}")
 	public List<Game> getGamesByGenreId(@PathVariable("idGenre") Long idGenre) {
 		return gameService.findByGenreIdGenre(idGenre);
+	}
+	
+	@GetMapping("/auth")
+	Authentication getAuth(Authentication auth) {
+		return auth;
 	}
 }

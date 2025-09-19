@@ -2,9 +2,11 @@ package com.yassine.games.security;
 
 import java.util.Collections;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -19,6 +21,9 @@ import jakarta.servlet.http.HttpServletRequest;
 @EnableWebSecurity
 
 public class SecurityConfig {
+	
+	@Autowired
+	KeycloakRoleConverter keycloakRoleConverter;
 
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -44,8 +49,8 @@ public class SecurityConfig {
 						.requestMatchers(HttpMethod.PUT, "/api/updategame/**").hasAuthority("ADMIN")
 						.requestMatchers(HttpMethod.DELETE, "/api/deletegame/**").hasAuthority("ADMIN")
 						.anyRequest().authenticated())
-
-				.addFilterBefore(new JWTAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class);
+						.oauth2ResourceServer(ors->ors.jwt(jwt->jwt.jwtAuthenticationConverter(keycloakRoleConverter)));
+						//.oauth2ResourceServer(rs -> rs.jwt(Customizer.withDefaults()));
 
 		return http.build();
 	}
