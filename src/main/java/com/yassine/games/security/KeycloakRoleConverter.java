@@ -22,13 +22,18 @@ public class KeycloakRoleConverter implements Converter<Jwt, AbstractAuthenticat
 	@Override
 	public AbstractAuthenticationToken convert(Jwt jwt) {
 		
-		Map<String, Object> realmAccess = (Map<String, Object>)jwt.getClaims().get("realm_access");
+		// Map<String, Object> realmAccess = (Map<String, Object>)jwt.getClaims().get("realm_access");
+		Map<String, Object> resourceAccess = (Map<String, Object>)jwt.getClaims().get("resource_access");
 		
-		if (realmAccess == null || realmAccess.isEmpty()) {
+		//if (realmAccess == null || realmAccess.isEmpty()) {return null;}
+		if (resourceAccess == null || resourceAccess.isEmpty()) {
 			return null;
 		}
 		
-		Collection<GrantedAuthority> authorities = ((List<String>)realmAccess.get("roles")).stream().map(role -> new SimpleGrantedAuthority(role)).collect(Collectors.toList());
+		//Collection<GrantedAuthority> authorities = ((List<String>)realmAccess.get("roles")).stream().map(role -> new SimpleGrantedAuthority(role)).collect(Collectors.toList());
+		// Get roles from the "account" client
+		Map<String, Object> accountAccess = (Map<String, Object>) resourceAccess.get("prod-app");
+		Collection<GrantedAuthority> authorities = ((List<String>)accountAccess.get("roles")).stream().map(role -> new SimpleGrantedAuthority(role)).collect(Collectors.toList());
 		
 		//ajouter les rôles de la rubrique scope (email, profile)
 		authorities = Stream.concat(jwtGrantedAuthoritiesConverter.convert(jwt).stream(),authorities.stream()).collect(Collectors.toSet());
